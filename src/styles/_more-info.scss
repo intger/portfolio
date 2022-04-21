@@ -1,0 +1,121 @@
+// More Info 
+.choices {
+    display: block;
+    background-color: $white;
+    margin: 4rem auto;
+    padding: 3rem;
+    border: 1px solid #eee;
+    border-radius: 10px;
+    box-shadow: 0 14px 28px rgb(0 0 0 / 25%), 0 10px 10px rgb(0 0 0 / 22%);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    width: 100%;
+    @include media-breakpoint-up(lg) { 
+        width: 35%;
+    }
+    .info {
+        p {
+            margin: 2rem 0;
+        }
+    }
+    .info-btns {
+        display: flex;
+        flex-flow: wrap row;
+        justify-content: center;
+        * {
+            margin: .25rem;
+        }
+    }
+    .contact-form {
+        position: relative;
+        display: block;
+        height: 0;
+        overflow: hidden;
+        opacity: 0;
+        transition: opacity 1s, height .35s;
+        &.open {
+            margin: 2rem 0;
+            overflow: unset; 
+            opacity: 1;
+            transition: opacity 1s, height .35s;
+        }
+        .notice-col {
+            padding: 0 0.3rem;
+            .cf-notice {
+                font-style: italic;
+                font-family: $sans-serif-light;
+                font-size: 17px;
+                margin-bottom: 10px;
+                border: 5px dashed $red;
+                padding: 1rem;
+                color: $gray;
+            }
+        }
+        .form-el {
+            margin: 0.5rem 0;
+            padding: 0 0.3rem;
+            // Invalid 
+            &.invalid {
+                input, textarea, select {
+                    border: 2px solid $red;
+                }
+                span {
+                    display: block;
+                    width: 100%;
+                    text-align: left;
+                    font-style: italic;
+                    margin-top: 0.5rem;
+                    color: $red;
+                }
+            }
+
+            input, textarea, select {
+                width: 100%;
+                padding: 0.5rem;
+                border-radius: 0.2rem;
+                border: 1px solid $text;
+                &::placeholder, 
+                &::-moz-placeholder, 
+                &:-moz-placeholder, 
+                &:-ms-input-placeholder {
+                    color: $gray;
+                }
+                &::-webkit-input-placeholder {
+                    color: $gray;
+                }
+            }
+            textarea {
+                height: 10rem;
+                max-height: 20rem;
+            }
+            select {
+                color: $gray;
+            }
+            .submit-btn {
+                color: #fff;
+                background-color: $green;
+                border: 2px solid $green;
+                font-weight: 700;
+                font-family: $sans-serif;
+                padding: 0.5rem 2rem;
+                border-radius: 0.3rem;
+                cursor: pointer;
+            }
+
+        }
+        .message-box {
+            padding: 0.5rem 1rem;
+            background: rgba(7, 200, 8, 0.8);
+            color: white;
+            width: 80%;
+            margin: 0 auto;
+            margin-top: 2rem;
+            border-radius: 3px;
+            &.error {
+                background: rgba(227, 84, 35,0.9);
+            }
+        }
+        .obligatory {
+            text-align: left;
+        }
+    }
+}

@@ -1,0 +1,49 @@
+.portfolio {
+    .portfolio-item {
+        .image-box {
+            cursor: pointer;
+            margin: 2rem 0.5rem;
+            padding: 1rem;
+            background-color: #fff;
+            border: 1px solid #d9d9d9;
+            box-shadow: 13px 12px 13px -4px $mid-gray;
+            border-radius: 10px;
+            transition: 0.5s ease-out;
+            
+            &:hover {
+                transform: scale(0.8);
+                transition: 0.5s ease-out;
+            }
+            .gatsby-image-wrapper {
+                max-height: 20rem;
+                img {
+                    width: 100%;
+                }
+            }
+        }
+        .overlay-title {
+            color: $text;
+            width: fit-content;
+            padding-bottom: 5px;
+            display: block;
+            margin: 0 auto;
+            font-family: $sans-serif;
+        }
+    }
+}
+// Modal styles
+.portfolio-modal {
+    .modal-header {
+        background-color: $light-gray;
+        .modal-title {
+            font-family: $sans-serif-light;
+            color: $gray;
+        }
+    }
+    .modal-body {
+        text-align: center;
+    }
+    .modal-footer {
+        margin: 0 auto;
+    }
+}

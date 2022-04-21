@@ -1,0 +1,53 @@
+.navbar {
+    box-shadow: 0px 1px 15px -5px $gray;
+    .navbar-nav {
+        .nav-item {
+            &.wp-menu-item, &.quote-menu-item {
+                .nav-link {
+                    &::before {
+                        display: inline-block;
+                        font-style: normal;
+                        font-variant: normal;
+                        text-rendering: auto;
+                        -webkit-font-smoothing: antialiased;
+                        position: relative;
+                        font-size: 1.1rem;
+                        top: 1px;
+                        left: -7px;
+                        padding-left: 7px;
+                    }
+                }
+            }
+            &.wp-menu-item {
+                .nav-link {
+                    &::before {
+                        content: '\f19a';
+                        font-family: "Font Awesome 5 Brands";
+                        font-weight: normal;
+                    }
+                }
+            }
+            &.quote-menu-item {
+                .nav-link {
+                    @include media-breakpoint-up(lg) { 
+                        background: $green;
+                        border-radius: 5px;
+                        border: 2px solid $text;
+                        color: $white;
+                    }
+                    &::before {
+                        content: '\f328';
+                        font-family: "Font Awesome 5 Free";
+                    }
+                }
+            }
+            .nav-link {
+                display: inline-block;
+                text-transform: uppercase;
+                color: $text;
+                padding: 0.7rem 1rem;
+            }
+
+        }
+    }
+}

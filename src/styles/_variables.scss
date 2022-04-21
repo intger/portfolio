@@ -1,0 +1,25 @@
+// Fonts
+@font-face {
+    font-family: "Roboto";
+    src: url("fonts/Roboto-Regular.woff") format("woff"), url("fonts/Roboto-Regular.svg") format("svg");
+}
+
+@font-face {
+    font-family: "Ubuntu";
+    src: url("fonts/Ubuntu-Regular.woff") format("woff"), url("fonts/Ubuntu-Regular.svg") format("svg");
+}
+
+$sans-serif: "Ubuntu";
+$sans-serif-light: "Roboto";
+
+// Color vars
+$white:#fff;
+$dark-gray: #5b5b5b;
+$gray: #777777;
+$mid-gray: #ccc;
+$light-gray: #f9f9f9;
+$text: #222;
+
+$green: #07c808;
+$dark-green: #06ac07;
+$red: #e35423;
