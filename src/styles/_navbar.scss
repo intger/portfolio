@@ -1,5 +1,8 @@
 .navbar {
     box-shadow: 0px 1px 15px -5px $gray;
+    .portfolio-container {
+        padding: 0 1.5rem;
+    }
     .navbar-nav {
         .nav-item {
             &.wp-menu-item, &.quote-menu-item {
@@ -48,6 +51,14 @@
                 padding: 0.7rem 1rem;
             }
 
+        }
+    }
+    .navbar-brand {
+        .gatsby-image-wrapper {
+            max-width: 200px;
+            @include media-breakpoint-up(sm) { 
+                max-width: unset;
+            }
         }
     }
 }
