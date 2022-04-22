@@ -1,4 +1,4 @@
-# 🚀 Codentity Portfolio - portfolio.codentity.net
+# 🚀 Codentity Portfolio
 
 Headless Portfolio website built with Gatsby and Wordpress. 
 
