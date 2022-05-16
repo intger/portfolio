@@ -29,13 +29,11 @@ jobs:
       - name: Check out latest code
         uses: actions/checkout@v2
 
-      - name: Create .env files
-        uses: SpicyPizza/create-envfile@v1.3
-        with:
-          ENVKEY_DEBUG: false
-          ENVKEY_API_URL: ${{ secrets.API_URL }}
-          file_name: .env
-          fail_on_empty: false
+      - name: 'Create env file'
+        run: |
+          touch .env.production
+          echo API_URL=${{ secrets.API_URL }} >> .env
+          cat .env
 
       # Grab the required version of NodeJS
       - name: Set Node.js
