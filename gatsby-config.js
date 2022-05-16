@@ -10,7 +10,7 @@ module.exports = {
     {
       resolve: "gatsby-source-wordpress",
       options: {
-        url: `${process.env.API_URL}/graphql`,
+        url: `${process.env.API_URL}graphql`,
         useACF: true,
       },
     },
