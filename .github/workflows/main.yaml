@@ -32,8 +32,8 @@ jobs:
       - name: 'Create env file'
         run: |
           touch .env.production
-          echo API_URL=${{ secrets.API_URL }} >> .env
-          cat .env
+          echo API_URL=${{ secrets.API_URL }} >> .env.production
+          cat .env.production
 
       # Grab the required version of NodeJS
       - name: Set Node.js
