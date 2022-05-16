@@ -29,6 +29,14 @@ jobs:
       - name: Check out latest code
         uses: actions/checkout@v2
 
+      - name: Create .env files
+        uses: SpicyPizza/create-envfile@v1.3
+        with:
+          envkey_DEBUG: false
+          envkey_API_URL: ${{ secrets.API_URL }}
+          file_name: .env
+          fail_on_empty: false
+
       # Grab the required version of NodeJS
       - name: Set Node.js
         uses: actions/setup-node@v2.2.0
