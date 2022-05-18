@@ -2,11 +2,13 @@
 @font-face {
     font-family: "Roboto";
     src: url("fonts/Roboto-Regular.woff") format("woff"), url("fonts/Roboto-Regular.svg") format("svg");
+    font-display: swap;
 }
 
 @font-face {
     font-family: "Ubuntu";
     src: url("fonts/Ubuntu-Regular.woff") format("woff"), url("fonts/Ubuntu-Regular.svg") format("svg");
+    font-display: swap;
 }
 
 $sans-serif: "Ubuntu";
