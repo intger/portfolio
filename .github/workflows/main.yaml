@@ -1,6 +1,5 @@
 # Deploy Gatsby to Self Managed Server
-
-name: Deploy to my Server
+name: Deploy Website
 
 # Controls when the workflow will run
 on:
