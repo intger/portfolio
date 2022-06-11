@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { navigate } from '@gatsbyjs/reach-router'
 
-import ContactForm from './ContactForm';
+import ContactForm from './ContactForm/ContactForm';
 
 const MoreInfo = () => {
     const [toggleForm, setToggleForm] = useState(false);
