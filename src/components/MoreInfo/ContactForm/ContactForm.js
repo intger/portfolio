@@ -2,11 +2,11 @@ import React, {useState, useRef, useEffect} from 'react'
 import { validator } from '../../../shared/utility';
 import axios from 'axios';
 import { Input } from './Input/Input';
-import {formData} from './formData';
+import { formData } from './formData';
 
 const ContactForm = (props) => {
 
-    const initialForm = formData;
+    const initialForm = JSON.parse(JSON.stringify(formData));
     const [form, setForm] = useState(initialForm);
     const fieldArr = [];
     let fields;
