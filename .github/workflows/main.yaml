@@ -54,8 +54,11 @@ jobs:
           key: ${{secrets.SSH_KEY}}
           known_hosts: 'Just a placeholder'
           
-      - name: Adding Known Hosts
-        run: ssh-keygen -F non-existent-address 2>&1 1>/dev/null | awk '/^line .* missing|invalid key|too/ {if (!seen[$2]++)  printf $2"d;"}' | xargs  -I % -r sed -i -e '%' ~/.ssh/known_hosts && ssh-keygen -R github.com && curl -L https://api.github.com/meta | jq -r '.ssh_keys | .[]' | sed -e 's/^/github.com /' >> ~/.ssh/known_hosts
+#       - name: Adding Known Hosts
+#         run: | 
+#         ssh-keygen -F non-existent-address 2>&1 1>/dev/null | awk '/^line .* missing|invalid key|too/ {if (!seen[$2]++)  printf $2"d;"}' | xargs  -I % -r sed -i -e '%' ~/.ssh/known_hosts
+#         ssh-keygen -R github.com
+#         curl -L https://api.github.com/meta | jq -r '.ssh_keys | .[]' | sed -e 's/^/github.com /' >> ~/.ssh/known_hosts
 
      # Finally, deploy it to your very own server
       - name: Deploy To Live
