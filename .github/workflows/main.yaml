@@ -56,4 +56,4 @@ jobs:
 
      # Finally, deploy it to your very own server
       - name: Deploy To Live
-        run: rsync -avzh --delete -e 'ssh -p21098 -o StrictHostKeyChecking=no' public/* --rsync-path='mkdir -p ${{secrets.TARGET_DIR}} && rsync' ${{secrets.SSH_SERVER}}:${{secrets.TARGET_DIR}}
+        run: rsync -avzh --delete -e 'ssh -p21098 -o StrictHostKeyChecking=no  -oHostKeyAlgorithms=+ssh-rsa' public/* --rsync-path='mkdir -p ${{secrets.TARGET_DIR}} && rsync' ${{secrets.SSH_SERVER}}:${{secrets.TARGET_DIR}}
