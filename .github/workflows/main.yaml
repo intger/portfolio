@@ -52,8 +52,8 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{secrets.SSH_KEY}}
-          known_hosts: 'Just a placeholder'
+          known_hosts: ${{ secrets.KNOWN_HOSTS_OF_BASTION }}
 
      # Finally, deploy it to your very own server
       - name: Deploy To Live
-        run: rsync -avzh --delete -e 'ssh -p21098 -o StrictHostKeyChecking=no -oHostKeyAlgorithms=+ssh-dss' public/* --rsync-path='mkdir -p ${{secrets.TARGET_DIR}} && rsync' ${{secrets.SSH_SERVER}}:${{secrets.TARGET_DIR}}
+        run: rsync -avzh --delete -e 'ssh -p21098 -oHostKeyAlgorithms=+ssh-dss' public/* --rsync-path='mkdir -p ${{secrets.TARGET_DIR}} && rsync' ${{secrets.SSH_SERVER}}:${{secrets.TARGET_DIR}}
