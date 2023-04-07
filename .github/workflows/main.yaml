@@ -25,7 +25,7 @@ jobs:
     steps:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - name: Check out latest code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
 
       - name: 'Create env file'
         run: |
@@ -35,7 +35,7 @@ jobs:
 
       # Grab the required version of NodeJS
       - name: Set Node.js
-        uses: actions/setup-node@v2.2.0
+        uses: actions/setup-node@v3
         with:
           node-version: 14.x
 
@@ -52,8 +52,11 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{secrets.SSH_KEY}}
-          known_hosts: 'Just a placeholder'
+          known_hosts: unnecessary
 
+      - name: Adding Known Hosts
+        run: ssh-keyscan -p21098 -H ${{ secrets.SSH_HOST_IP }} >> ~/.ssh/known_hosts
+          
      # Finally, deploy it to your very own server
       - name: Deploy To Live
-        run: rsync -avzh --delete -e 'ssh -p21098 -o StrictHostKeyChecking=no' public/* --rsync-path='mkdir -p ${{secrets.TARGET_DIR}} && rsync' ${{secrets.SSH_SERVER}}:${{secrets.TARGET_DIR}}
+        run: rsync -avzh --delete -e 'ssh -p21098 -o PubkeyAcceptedKeyTypes=ssh-rsa -oHostKeyAlgorithms=+ssh-rsa' public/* --rsync-path='mkdir -p ${{secrets.TARGET_DIR}} && rsync' ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_IP }}:${{secrets.TARGET_DIR}}
