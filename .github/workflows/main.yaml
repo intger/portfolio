@@ -5,7 +5,7 @@ name: Deploy Website
 on:
   # Triggers the workflow on push request events but only for the main branch
   push:
-    branches: [ main ]
+    branches: [ main, test ]
     
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -52,14 +52,11 @@ jobs:
         uses: shimataro/ssh-key-action@v2
         with:
           key: ${{secrets.SSH_KEY}}
-          known_hosts: 'Just a placeholder'
-          
-#       - name: Adding Known Hosts
-#         run: | 
-#         ssh-keygen -F non-existent-address 2>&1 1>/dev/null | awk '/^line .* missing|invalid key|too/ {if (!seen[$2]++)  printf $2"d;"}' | xargs  -I % -r sed -i -e '%' ~/.ssh/known_hosts
-#         ssh-keygen -R github.com
-#         curl -L https://api.github.com/meta | jq -r '.ssh_keys | .[]' | sed -e 's/^/github.com /' >> ~/.ssh/known_hosts
+          known_hosts: unnecessary
 
+      - name: Adding Known Hosts
+        run: ssh-keyscan -p21098 -H ${{ secrets.SSH_HOST_IP }} >> ~/.ssh/known_hosts
+          
      # Finally, deploy it to your very own server
       - name: Deploy To Live
-        run: rsync -avzh --delete -e 'ssh -p21098 -o StrictHostKeyChecking=no  -oHostKeyAlgorithms=+ssh-rsa' public/* --rsync-path='mkdir -p ${{secrets.TARGET_DIR}} && rsync' ${{secrets.SSH_SERVER}}:${{secrets.TARGET_DIR}}
+        run: rsync -avzh --delete -e 'ssh -p21098 -o PubkeyAcceptedKeyTypes=ssh-rsa -oHostKeyAlgorithms=+ssh-rsa' public/* --rsync-path='mkdir -p ${{secrets.TARGET_DIR}} && rsync' ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST_IP }}:${{secrets.TARGET_DIR}}
